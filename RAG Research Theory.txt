@@ -1,0 +1,94 @@
+﻿Title:
+
+
+Understanding the workings of Retrieval Augmented Generation:
+ A project on a Research Assistant
+
+
+-Arjav Dhorajia
+
+
+
+
+Abstract: With advances in LLMs( Large Language Models), augmentation techniques such as Retrieval-Augmented Generation (RAG), Knowledge-Augmented Generation (KAG) and Context-Augmented Generation (CAG) are being increasingly integrated. However, the backend workings of these methods remain largely unknown.
+This study aims at understanding how RAG can be used in building a chatbot that can act as a Research Assistant.
+
+
+
+
+Body:
+
+
+Definition:
+
+
+RAG: Retrieval process that optimizes LLM responses by accessing/retrieving data from various external databases. This allows for generating responses outside of its training model, while generating relevant responses in different contexts.
+
+
+
+
+Workflow:
+
+
+RAG: 
+Retrieval process: Utilizes search algorithms and vector databases to extract data relevant to the prompt. The data then undergoes NLP techniques such as tokenization and elimination of stop words.
+Integration: Integrated into the LLM’s pre-trained contextual system in order to generate more particular case-specific answers.
+Vector databases: provide the ability to store and retrieve vectors as high-dimensional points. They add additional capabilities for efficient and fast lookup of nearest-neighbors in the N-dimensional space. They are typically powered by k-nearest neighbor (k-NN) indexes. Vector databases provide additional capabilities like data management, fault tolerance, authentication and access control, and a query engine. 
+  
+
+
+
+Steps/Terminologies:
+
+
+A search query is sent to an arXiv paper where the content is searched for in the paper’s abstract, title and author. Max results limit the number of papers to be returned. The data is returned by arXiv in XML format. Each entry represents a paper, and the title, summary and link are extracted and stored for later use.
+
+
+
+
+Chunking: Splitting long texts into smaller parts (chunks) for better processing. Smaller chunks assist with token limits for LLMs, improve accuracy in searches and return more relevant answers.
+
+
+Sentence Embeddings: Conversion of text in sentences to numerical vectors. An alternative to this is Word Embedding. Sentence embeddings capture the context and are suitable for Q&A whereas Word embedding is used for obtaining the meaning of words and mainly used for recommendations.
+
+
+FAISS Indexing: Facebook AI Similarity Search is used for searching data. It utilizes K-means clustering which makes it easier for searches in vector clusters. Additionally, it also uses OPQ (Optimized Product Quantization) which rotates the data for improved vector accuracy.
+
+
+Top k-relevant chunks are then chosen according to accuracy with respect to a particular query. 
+
+
+  
+
+
+
+FAISS search techniques: 
+Euclidean Distance vs Cosine Similarity 
+Euclidean Distance is better when vectors are collinear. According to linear distance on the line, a suitable vector is chosen for closest distance (similarity). Cosine Similarity is better when there are three vectors with equal lengths, and a decision for similarity cannot be made.
+
+
+
+
+
+
+
+
+Euclidean Distance Formula:
+  
+
+Cosine Similarity Formula: 
+  
+
+
+
+
+
+
+
+
+
+
+Works Used:
+
+
+1. Upadhyay, A. (2024, March 23). Efficient Information Retrieval with RAG Workflow - Akriti Upadhyay - Medium. Medium. https://medium.com/@akriti.upadhyay/efficient-information-retrieval-with-rag-workflow-afdfc2619171
